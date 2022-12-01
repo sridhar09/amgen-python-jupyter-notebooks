@@ -1,0 +1,21 @@
+<!doctype html>
+<title>Simple Todo</title>
+
+<h1>To-Do List</h1>
+
+<ul>
+{% for item in items %}
+    <li>
+        {{item}}
+        <form method="POST" action={{url_for('del_todo')}}>
+            <input type="hidden" name="index" value="{{loop.index0}}"/>
+            <input type="submit" value="Delete"/>
+        </form>
+    </li>
+{% endfor%}
+</ul>
+
+<form method="POST" action={{url_for('add_todo')}}>
+    <label for="item">Add todo item</label><br/>
+    <input name="item"/>
+</form>
